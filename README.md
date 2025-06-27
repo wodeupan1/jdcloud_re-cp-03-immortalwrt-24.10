@@ -14,6 +14,7 @@
 ## ✨ 主要特性
 
 ### 🔧 系统特性
+
 - **基于**: ImmortalWrt 24.10 (Linux 6.6 内核)
 - **源码仓库**: [padavanonly/immortalwrt-mt798x-6.6](https://github.com/padavanonly/immortalwrt-mt798x-6.6)
 - **根文件系统**: 2048MB 分区大小
@@ -22,31 +23,70 @@
 ### 📦 预装软件包
 
 #### 🌐 网络工具
+
 - **科学上网**: OpenClash, Passwall, SSR Plus+
-- **VPN服务**: WireGuard, OpenVPN Server, IPSec VPN
-- **网络管理**: DDNS (支持多家服务商), UPnP, Wake on LAN
-- **网络测试**: iperf3, tcping, tcpdump
+- **VPN服务**: WireGuard, OpenVPN Server, IPSec VPN, ZeroTier, Tailscale
+- **网络管理**:
+  - DDNS (支持多家服务商)
+  - UPnP, Wake on LAN (含增强版)
+  - 多WAN负载均衡 (MWAN3)
+  - SQM QoS 流量控制
+  - 带宽限速 (eqos-mtk)
+  - 网络加速 (TurboACC)
+- **网络监控**:
+  - Netdata 实时监控
+  - 流量统计 (nlbwmon)
+  - 系统统计 (statistics)
+- **网络测试**: iperf3, tcping, tcpdump, mtr
+- **安全工具**:
+  - AdGuard Home 广告拦截
+  - BanIP 封禁工具
+  - ACME SSL证书管理
 
 #### 🐳 容器化支持
-- **Docker**: 完整的 Docker 环境 (可选编译)
+
+- **Docker**: 完整的 Docker 环境
 - **容器管理**: Dockerman Web界面
 - **容器运行时**: containerd, runc, podman
+- **容器编排**: docker-compose
 
 #### 💾 存储与文件系统
+
 - **文件系统**: ext4, f2fs, NTFS, BTRFS 支持
-- **存储工具**: 自动挂载, 分区管理, USB存储支持
-- **网络存储**: Samba4 文件共享, SFTP服务器
+- **存储工具**:
+  - 自动挂载
+  - 分区管理 (diskman)
+  - 硬盘休眠 (hd-idle)
+  - USB存储支持
+- **网络存储**:
+  - Samba4 文件共享
+  - SFTP服务器
+  - WebDAV服务器
+  - FTP服务器 (vsftpd)
 
 #### 🎨 Web界面主题
+
 - Argon 主题
-- Bootstrap Mod 主题  
+- Bootstrap Mod 主题
 - Design 主题
 
 #### 🛠️ 系统工具
+
 - **终端**: ttyd Web终端, zsh shell
 - **编辑器**: vim, nano
-- **监控**: htop, 系统性能监控
-- **网络**: 以太网唤醒, 网络加速
+- **监控**:
+  - htop 进程监控
+  - 系统性能监控
+  - 日志查看器
+- **管理工具**:
+  - 命令执行工具
+  - 定时任务管理
+  - 高级重启管理
+  - 文件传输
+- **打印服务**: USB打印服务器 (p910nd)
+- **网络**:
+  - 以太网唤醒
+  - 网络时间同步 (NTP)
 
 ## 🚀 使用方法
 
@@ -55,6 +95,7 @@
 1. **Fork 本仓库**到你的 GitHub 账户
 
 2. **启动构建**:
+
    - 进入 Actions 页面
    - 选择 "jdcloud_re-cp-03-immortalwrt-24.10" 工作流
    - 点击 "Run workflow"
@@ -97,19 +138,21 @@ make -j$(nproc) || make -j1 V=s
 ## 📁 项目文件说明
 
 ### 配置文件
+
 - **`immortalwrt.config`**: 主要的构建配置文件，定义了所有要编译的软件包和内核选项
 - **`feeds.conf.default`**: 软件源配置，定义了软件包的获取来源
 
 ### 自定义脚本
+
 - **`diy-part1.sh`**: 第一阶段自定义脚本 (feeds 更新前执行)
   - 用于添加额外的软件源
   - 当前为模板，可根据需要取消注释相关行
-  
-- **`diy-part2.sh`**: 第二阶段自定义脚本 (feeds 更新后执行)  
+- **`diy-part2.sh`**: 第二阶段自定义脚本 (feeds 更新后执行)
   - 用于修改默认配置
   - 支持修改默认IP、主题、主机名等
 
 ### GitHub Actions
+
 - **`.github/workflows/builder.yml`**: 主构建工作流
 - **`.github/workflows/delete-older-releases.yml`**: 清理旧版本工作流
 
@@ -138,7 +181,7 @@ sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 # 添加 helloworld 软件源
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 
-# 添加 passwall 软件源  
+# 添加 passwall 软件源
 echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 ```
 
