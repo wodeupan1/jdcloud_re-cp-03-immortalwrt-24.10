@@ -24,15 +24,15 @@
 
 #### 🌐 网络工具
 
-- **科学上网**: OpenClash, Passwall, SSR Plus+
+- **科学上网**: Passwall
 - **VPN服务**: WireGuard, OpenVPN Server, IPSec VPN, ZeroTier, Tailscale
 - **网络管理**:
-  - DDNS (支持多家服务商)
+  - DDNS (支持阿里云、Cloudflare、DNSPOD等多家服务商)
   - UPnP, Wake on LAN (含增强版)
-  - 多WAN负载均衡 (MWAN3)
   - SQM QoS 流量控制
   - 带宽限速 (eqos-mtk)
-  - 网络加速 (TurboACC)
+  - 网络加速 (TurboACC-MTK)
+  - ARP绑定
 - **网络监控**:
   - Netdata 实时监控
   - 流量统计 (nlbwmon)
@@ -41,7 +41,7 @@
 - **安全工具**:
   - AdGuard Home 广告拦截
   - BanIP 封禁工具
-  - ACME SSL证书管理
+  - VLMCSD KMS服务器
 
 #### 🐳 容器化支持
 
@@ -52,17 +52,16 @@
 
 #### 💾 存储与文件系统
 
-- **文件系统**: ext4, f2fs, NTFS, BTRFS 支持
+- **文件系统**: ext4, f2fs, BTRFS 支持
 - **存储工具**:
   - 自动挂载
   - 分区管理 (diskman)
-  - 硬盘休眠 (hd-idle)
   - USB存储支持
-- **网络存储**:
-  - Samba4 文件共享
-  - SFTP服务器
-  - WebDAV服务器
-  - FTP服务器 (vsftpd)
+  - 多种分区工具 (fdisk, cfdisk, parted, gdisk)
+- **文件系统工具**:
+  - e2fsprogs (ext4工具)
+  - f2fs-tools (F2FS工具)
+  - btrfs-progs (BTRFS工具)
 
 #### 🎨 Web界面主题
 
@@ -73,7 +72,7 @@
 #### 🛠️ 系统工具
 
 - **终端**: ttyd Web终端, zsh shell
-- **编辑器**: vim, nano
+- **编辑器**: vim-fuller, nano
 - **监控**:
   - htop 进程监控
   - 系统性能监控
@@ -82,11 +81,12 @@
   - 命令执行工具
   - 定时任务管理
   - 高级重启管理
-  - 文件传输
-- **打印服务**: USB打印服务器 (p910nd)
 - **网络**:
   - 以太网唤醒
   - 网络时间同步 (NTP)
+- **其他**:
+  - Lucky 网络工具箱
+  - MT WiFi配置工具
 
 ## 🚀 使用方法
 
