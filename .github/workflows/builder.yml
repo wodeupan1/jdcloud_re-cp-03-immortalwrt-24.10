@@ -11,6 +11,8 @@
 name: jdcloud_re-cp-03-immortalwrt-24.10
 
 on:
+  schedule:
+    - cron: 0 22 * * *
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -27,8 +29,6 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-schedule:
-- cron: 0 16 * * *
 
 env:
   ###############手动修改##############
