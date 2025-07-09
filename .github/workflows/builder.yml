@@ -12,12 +12,14 @@ name: jdcloud_re-cp-03-immortalwrt-24.10
 
 on:
   repository_dispatch:
+  schedule:
+    - cron: 0 16 * * *
   workflow_dispatch:
     inputs:
       LAN_IP:
         description: 'Set LAN IP Address'
         required: true
-        default: '192.168.1.1'
+        default: '10.0.0.1'
       NO_DOCKERMAN:
         description: 'Not build luci-app-dockerman'
         required: true
@@ -27,8 +29,6 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-#  schedule:
-#    - cron: 0 16 * * *
 
 env:
   ###############手动修改##############
