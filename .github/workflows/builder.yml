@@ -190,7 +190,9 @@ jobs:
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.DEVICE_NAME }}${{ env.BUILD_DOCKERMAN }}
-        path: ${{ env.FIRMWARE }}
+        path: |
+          ${{ env.FIRMWARE }}
+          .config
 
     - name: 生成固件Release标签
       id: tag
