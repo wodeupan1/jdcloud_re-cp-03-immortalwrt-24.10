@@ -17,7 +17,7 @@ on:
       LAN_IP:
         description: 'Set LAN IP Address'
         required: true
-        default: '192.168.1.1'
+        default: '10.0.0.1'
       NO_DOCKERMAN:
         description: 'Not build luci-app-dockerman'
         required: true
@@ -142,6 +142,9 @@ jobs:
       run: |
         cd openwrt
         make defconfig
+        echo "================ Final .config diff ================"
+        ./scripts/diffconfig.sh
+        echo "===================================================="
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
